@@ -119,25 +119,30 @@ interface Diagnostic {
     var relatedInformation: Array<DiagnosticRelatedInformation>
 }
 
-enum class DiagnosticSeverity(val kind: Number) {
+enum class DiagnosticSeverity(val kind: Number, val desc: String) {
     /**
      * Reports an error.
      */
-    Error(1),
+    Error(1, "Error"),
     /**
      * Reports a warning.
      */
-    Warning(2),
+    Warning(2, "Warning"),
     /**
      * Reports an information.
      */
-    Information(3),
+    Information(3, "Information"),
     /**
      * Reports a hint.
      */
-    Hint(4);
+    Hint(4, "Hint");
 
-    fun ToNumber(): Number {
+    fun toNumber(): Number {
         return kind
     }
+
+    override fun toString(): String {
+        return desc
+    }
+
 }
