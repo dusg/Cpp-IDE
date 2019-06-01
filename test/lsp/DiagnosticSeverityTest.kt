@@ -1,10 +1,8 @@
-package test
+package lsp
 
 import lsp.DiagnosticSeverity
 import org.testng.Assert
 import org.testng.annotations.Test
-
-import org.testng.Assert.*
 
 class DiagnosticSeverityTest {
 
