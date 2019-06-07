@@ -1,4 +1,4 @@
-package lsp
+package lsp.structs
 
 // URI
 // URI’s are transferred as strings. The URI’s format is defined in http://tools.ietf.org/html/rfc3986
@@ -155,6 +155,7 @@ enum class DiagnosticSeverity(val kind: Number, val desc: String) {
     }
 
 }
+
 internal interface Command {
     /**
      * Title of the command, like `save`.
@@ -207,7 +208,7 @@ interface TextDocumentEdit : FileOperation {
 /**
  * Options to create a file.
  */
-interface CreateFileOptions :FileOperation{
+interface CreateFileOptions : FileOperation {
     /**
      * Overwrite existing file. Overwrite wins over `ignoreIfExists`
      */
@@ -217,10 +218,11 @@ interface CreateFileOptions :FileOperation{
      */
     var ignoreIfExists: Boolean?
 }
+
 /**
  * Create file operation
  */
-interface CreateFile :FileOperation{
+interface CreateFile : FileOperation {
     /**
      * A create
      */
@@ -239,7 +241,7 @@ interface CreateFile :FileOperation{
 /**
  * Rename file options
  */
-interface RenameFileOptions :FileOperation{
+interface RenameFileOptions : FileOperation {
     /**
      * Overwrite target if existing. Overwrite wins over `ignoreIfExists`
      */
@@ -253,7 +255,7 @@ interface RenameFileOptions :FileOperation{
 /**
  * Rename file operation
  */
-interface RenameFile :FileOperation{
+interface RenameFile : FileOperation {
     /**
      * A rename
      */
@@ -276,7 +278,7 @@ interface RenameFile :FileOperation{
 /**
  * Delete file options
  */
-interface DeleteFileOptions :FileOperation{
+interface DeleteFileOptions : FileOperation {
     /**
      * Delete the content recursively if a folder is denoted.
      */
@@ -290,7 +292,7 @@ interface DeleteFileOptions :FileOperation{
 /**
  * Delete file operation
  */
-interface DeleteFile :FileOperation{
+interface DeleteFile : FileOperation {
     /**
      * A delete
      */
@@ -311,9 +313,10 @@ interface WorkspaceEdit {
      * Holds changes to existing resources.
      */
     interface Changes {
-        var uri : DocumentUri
-        var edits : Array<TextEdit>
+        var uri: DocumentUri
+        var edits: Array<TextEdit>
     }
+
     var changes: Changes?
 
     /**
@@ -337,6 +340,7 @@ interface TextDocumentIdentifier {
      */
     var uri: DocumentUri;
 }
+
 interface VersionedTextDocumentIdentifier : TextDocumentIdentifier {
     /**
      * The version number of this document. If a versioned text document identifier
@@ -350,6 +354,7 @@ interface VersionedTextDocumentIdentifier : TextDocumentIdentifier {
      */
     var version: Number?
 }
+
 interface TextDocumentItem {
     /**
      * The text document's URI.
@@ -396,18 +401,18 @@ interface DocumentFilter {
      */
     var scheme: String?
 
-/**
- * A glob pattern, like `*.{ts,js}`.
- *
- * Glob patterns can have the following syntax:
- * - `*` to match one or more characters in a path segment
- * - `?` to match on one character in a path segment
- * - `**` to match any number of path segments, including none
- * - `{}` to group conditions (e.g. `**​/ *.{ts,js}` matches all TypeScript and JavaScript files)
- * - `[]` to declare a range of characters to match in a path segment (e.g., `example.[0-9]` to match on `example.0`, `example.1`, …)
- * - `[!...]` to negate a range of characters to match in a path segment (e.g., `example.[!0-9]` to match on `example.a`, `example.b`, but not `example.0`)
-*/
-var pattern: String?
+    /**
+     * A glob pattern, like `*.{ts,js}`.
+     *
+     * Glob patterns can have the following syntax:
+     * - `*` to match one or more characters in a path segment
+     * - `?` to match on one character in a path segment
+     * - `**` to match any number of path segments, including none
+     * - `{}` to group conditions (e.g. `**​/ *.{ts,js}` matches all TypeScript and JavaScript files)
+     * - `[]` to declare a range of characters to match in a path segment (e.g., `example.[0-9]` to match on `example.0`, `example.1`, …)
+     * - `[!...]` to negate a range of characters to match in a path segment (e.g., `example.[!0-9]` to match on `example.a`, `example.b`, but not `example.0`)
+     */
+    var pattern: String?
 }
 
 typealias DocumentSelector = Array<DocumentFilter>
@@ -416,7 +421,7 @@ enum class MarkupKind(val kind: String) {
     PlainText("plaintext"),
     Markdown("markdown");
 
-    override fun toString(): String{
+    override fun toString(): String {
         return kind
     }
 }
@@ -432,3 +437,66 @@ interface MarkupContent {
      */
     var value: String;
 }
+
+interface InitializeParams {
+    /**
+     * The process Id of the parent process that started
+     * the server. Is null if the process has not been started by another process.
+     * If the parent process is not alive then the server should exit (see exit notification) its process.
+     */
+    var processId: Number?
+
+    /**
+     * The rootPath of the workspace. Is null
+     * if no folder is open.
+     *
+     * @deprecated in favour of rootUri.
+     */
+    var rootPath: String?
+
+    /**
+     * The rootUri of the workspace. Is null if no
+     * folder is open. If both `rootPath` and `rootUri` are set
+     * `rootUri` wins.
+     */
+    var rootUri: DocumentUri?
+
+    /**
+     * User provided initialization options.
+     */
+    var initializationOptions: Any?;
+
+    /**
+     * The capabilities provided by the client (editor or tool)
+     */
+    var capabilities: ClientCapabilities;
+
+    /**
+     * The initial trace setting. If omitted trace is disabled ('off').
+     */
+    enum class TraceType(val kind: String) {
+        OFF("off"),
+        MESSAGES("messages"),
+        VERBOSE("verbose");
+
+        override fun toString(): String {
+            return kind
+        }
+    }
+
+    var trace: String?
+
+    /**
+     * The workspace folders configured in the client when the server starts.
+     * This property is only available if the client supports workspace folders.
+     * It can be `null` if the client supports workspace folders but none are
+     * configured.
+     *
+     * Since 3.6.0
+     */
+    var workspaceFolders: Array<WorkspaceFolder>?
+}
+
+interface ClientCapabilities
+
+interface WorkspaceFolder

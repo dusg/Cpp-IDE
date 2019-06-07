@@ -1,6 +1,6 @@
 package lsp
 
-import lsp.DiagnosticSeverity
+import lsp.structs.DiagnosticSeverity
 import org.testng.Assert
 import org.testng.annotations.Test
 

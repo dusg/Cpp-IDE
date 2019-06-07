@@ -20,59 +20,59 @@ import java.awt.Font
 
 class CppSyntaxHighlighter : SyntaxHighlighterBase() {
     companion object {
-        private val CPP_KEYWORD = TextAttributesKey.createTextAttributesKey(
+        val CPP_KEYWORD = TextAttributesKey.createTextAttributesKey(
                 "CPP.KEYWORD",
                 DefaultLanguageHighlighterColors.KEYWORD
         )
-        private val C_KEYWORD = TextAttributesKey.createTextAttributesKey(
+        val C_KEYWORD = TextAttributesKey.createTextAttributesKey(
                 "C.KEYWORD",
                 DefaultLanguageHighlighterColors.KEYWORD
         )
-        private val PRE_KEYWORD = TextAttributesKey.createTextAttributesKey(
+        val PRE_KEYWORD = TextAttributesKey.createTextAttributesKey(
                 "PRE.KEYWORD",
                 DefaultLanguageHighlighterColors.KEYWORD
         )
-        private val CPP_LINE_COMMENT = TextAttributesKey.createTextAttributesKey(
+        val CPP_LINE_COMMENT = TextAttributesKey.createTextAttributesKey(
                 "CPP.LINE_COMMENT",
                 DefaultLanguageHighlighterColors.LINE_COMMENT
         )
-        private val CPP_BLOCK_COMMENT = TextAttributesKey.createTextAttributesKey(
+        val CPP_BLOCK_COMMENT = TextAttributesKey.createTextAttributesKey(
                 "CPP.BLOCK_COMMENT",
                 DefaultLanguageHighlighterColors.BLOCK_COMMENT
         )
-        private val CPP_STRING = TextAttributesKey.createTextAttributesKey(
+        val CPP_STRING = TextAttributesKey.createTextAttributesKey(
                 "CPP.STRING",
                 DefaultLanguageHighlighterColors.STRING
         )
-        private val CPP_NUMBER = TextAttributesKey.createTextAttributesKey(
+        val CPP_NUMBER = TextAttributesKey.createTextAttributesKey(
                 "CPP.NUMBER",
                 DefaultLanguageHighlighterColors.NUMBER
         )
-        private val CPP_OPERATION_SIGN = TextAttributesKey.createTextAttributesKey(
+        val CPP_OPERATION_SIGN = TextAttributesKey.createTextAttributesKey(
                 "CPP.OPERATION_SIGN",
                 DefaultLanguageHighlighterColors.OPERATION_SIGN
         )
-        private val CPP_PARENTHS = TextAttributesKey.createTextAttributesKey(
+        val CPP_PARENTHS = TextAttributesKey.createTextAttributesKey(
                 "CPP.PARENTHS",
                 DefaultLanguageHighlighterColors.PARENTHESES
         )
-        private val CPP_BRACKETS = TextAttributesKey.createTextAttributesKey(
+        val CPP_BRACKETS = TextAttributesKey.createTextAttributesKey(
                 "CPP.BRACKETS",
                 DefaultLanguageHighlighterColors.BRACKETS
         )
-        private val CPP_BRACES = TextAttributesKey.createTextAttributesKey(
+        val CPP_BRACES = TextAttributesKey.createTextAttributesKey(
                 "CPP.BRACES",
                 DefaultLanguageHighlighterColors.BRACES
         )
-        private val CPP_COMMA = TextAttributesKey.createTextAttributesKey(
+        val CPP_COMMA = TextAttributesKey.createTextAttributesKey(
                 "CPP.COMMA",
                 DefaultLanguageHighlighterColors.COMMA
         )
-        private val CPP_DOT = TextAttributesKey.createTextAttributesKey(
+        val CPP_DOT = TextAttributesKey.createTextAttributesKey(
                 "CPP.DOT",
                 DefaultLanguageHighlighterColors.DOT
         )
-        private val CPP_SEMICOLON = TextAttributesKey.createTextAttributesKey(
+        val CPP_SEMICOLON = TextAttributesKey.createTextAttributesKey(
                 "CPP.SEMICOLON",
                 DefaultLanguageHighlighterColors.SEMICOLON
         )

@@ -23,6 +23,7 @@
     <!-- Add your extensions here -->
     <fileTypeFactory implementation="cpptool.CppFileTypeFactory"/>
     <lang.syntaxHighlighterFactory implementationClass="cpptool.CppSyntaxHighlighterFactory" language="C/C++"/>
+    <colorSettingsPage implementation="cpptool.CppColorSettingsPage"/>
   </extensions>
 
   <actions>
