@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/myLSP.iml" filepath="$PROJECT_DIR$/myLSP.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/cpp_ide.iml" filepath="$PROJECT_DIR$/.idea/cpp_ide.iml" />
     </modules>
   </component>
 </project>
