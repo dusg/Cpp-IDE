@@ -16,7 +16,7 @@ class CpptoolPreloadingActivity : PreloadingActivity{
      */
     override fun preload(indicator: ProgressIndicator) {
         val ext = CppFileType.INSTANCE.defaultExtension.replace(';', ',')
-        val cmd = arrayOf("/usr/local/opt/llvm/bin/clangd")
+        val cmd = arrayOf("cquery")
         IntellijLanguageClient.addServerDefinition(RawCommandServerDefinition(ext, cmd))
     }
 }

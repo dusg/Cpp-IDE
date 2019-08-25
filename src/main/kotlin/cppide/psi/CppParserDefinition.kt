@@ -19,7 +19,7 @@ class CppParserDefinition : ParserDefinition{
      * @return the parser instance.
      */
     override fun createParser(project: Project?): PsiParser {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return CppPsiParser()
     }
 
     /**
@@ -29,7 +29,7 @@ class CppParserDefinition : ParserDefinition{
      * @return the PSI file element.
      */
     override fun createFile(viewProvider: FileViewProvider?): PsiFile {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return CppFile(viewProvider!!)
     }
 
     /**
@@ -39,7 +39,7 @@ class CppParserDefinition : ParserDefinition{
      * @return the set of string literal element types.
      */
     override fun getStringLiteralElements(): TokenSet {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return CppTokenTypes.LITERALS
     }
 
     /**
@@ -48,7 +48,7 @@ class CppParserDefinition : ParserDefinition{
      * @return the file node element type.
      */
     override fun getFileNodeType(): IFileElementType {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return CppFileElementType()
     }
 
     /**
@@ -59,7 +59,7 @@ class CppParserDefinition : ParserDefinition{
      * @return the lexer instance.
      */
     override fun createLexer(project: Project?): Lexer {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return CppLexerAdapter()
     }
 
     /**

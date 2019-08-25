@@ -20,7 +20,8 @@
         <fileTypeFactory implementation="cppide.CppFileTypeFactory"/>
         <lang.syntaxHighlighterFactory implementationClass="cppide.CppSyntaxHighlighterFactory" language="C/C++"/>
         <colorSettingsPage implementation="cppide.CppColorSettingsPage"/>
-        <preloadingActivity implementation="cppide.plugin.CpptoolPreloadingActivity" id="cppide.plugin.CpptoolPreloadingActivity"/>
+<!--        <preloadingActivity implementation="cppide.plugin.CpptoolPreloadingActivity" id="cppide.plugin.CpptoolPreloadingActivity"/>-->
+        <postStartupActivity implementation="cppide.plugin.CppProjectStartUp" id="cppide.plugin.CppProjectStartUp"/>
 
         <completion.contributor implementationClass="org.wso2.lsp4intellij.contributors.LSPCompletionContributor" id="LSPCompletionContributor" language="C/C++"/>
         <localInspection displayName="LSP"
@@ -44,7 +45,7 @@
     </application-components>
 
     <actions>
-        <!-- Add your actions here -->
+<!--         Add your actions here -->
         <action class="org.wso2.lsp4intellij.actions.LSPReformatAction" id="ReformatCode" use-shortcut-of="ReformatCode"
                 text="Reformat Code"/>
         <action class="org.wso2.lsp4intellij.actions.LSPShowReformatDialogAction" id="ShowReformatFileDialog"
@@ -54,4 +55,9 @@
             <keyboard-shortcut first-keystroke="shift alt F7" keymap="$default"/>
         </action>
     </actions>
+    <project-components>
+        <component>
+            <implementation-class>cppide.plugin.CppProjectComponent</implementation-class>
+        </component>
+    </project-components>
 </idea-plugin>
