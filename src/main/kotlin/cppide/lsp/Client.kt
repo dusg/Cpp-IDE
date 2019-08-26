@@ -1,11 +1,15 @@
 package cppide.lsp
 
+import com.sun.jna.Platform
+import com.sun.jna.platform.win32.Kernel32
 import org.eclipse.lsp4j.*
 import org.eclipse.lsp4j.services.LanguageServer
 import org.wso2.lsp4intellij.client.ClientContext
 import org.wso2.lsp4intellij.client.DefaultLanguageClient
+import java.lang.management.ManagementFactory
 import java.util.concurrent.CompletableFuture
 import java.util.concurrent.Future
+
 
 class Client(context: ClientContext?) : DefaultLanguageClient(context) {
 
@@ -16,13 +20,23 @@ class Client(context: ClientContext?) : DefaultLanguageClient(context) {
     private val initArgs: InitializeParams
         get() {
             val args = InitializeParams()
-            args.processId = ProcessHandle.current().pid().toInt()
+//            args.processId = ProcessHandle.current().pid().toInt()
+            args.processId = getCurrentPid()
             args.rootUri = context.project.basePath
             args.capabilities = clientCapabilities
             args.trace = "off"
             args.workspaceFolders = this.workspaceFolders().get()
             return args
         }
+
+    private fun getCurrentPid(): Int? {
+        return if (Platform.isWindows()) {
+            Kernel32.INSTANCE.GetCurrentProcessId()
+        } else {
+            CLibrary.INSTANCE.getpid()
+        }
+    }
+
     lateinit var serverFuture: Future<Void>
     lateinit var languageServer: LanguageServer
 

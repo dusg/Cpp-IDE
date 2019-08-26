@@ -18,7 +18,7 @@ repositories {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk11"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     implementation 'com.github.ballerina-platform:lsp4intellij:0.91.0'
     compile group: 'net.java.dev.jna', name: 'jna', version: '5.4.0'
     testCompile group: 'junit', name: 'junit', version: '4.12'
@@ -30,10 +30,10 @@ intellij {
     version '2019.2.1'
 }
 compileKotlin {
-    kotlinOptions.jvmTarget = "11"
+    kotlinOptions.jvmTarget = "1.8"
 }
 compileTestKotlin {
-    kotlinOptions.jvmTarget = "11"
+    kotlinOptions.jvmTarget = "1.8"
 }
 patchPluginXml {
     changeNotes """
