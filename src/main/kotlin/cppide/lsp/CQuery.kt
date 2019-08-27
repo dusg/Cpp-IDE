@@ -20,6 +20,6 @@ class CQuery {
         val processBuilder = ProcessBuilder("cquery")
         processBuilder.directory(File(project.basePath))
         _process = processBuilder.start()
-        return _process!!
+        return _process
     }
 }

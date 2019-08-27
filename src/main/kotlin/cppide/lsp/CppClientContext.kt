@@ -6,7 +6,7 @@ import org.wso2.lsp4intellij.client.languageserver.requestmanager.RequestManager
 import org.wso2.lsp4intellij.editor.EditorEventManager
 
 class CppClientContext : ClientContext{
-    private lateinit var _project: Project
+    private var _project: Project
 
     constructor(project: Project){
         _project = project
