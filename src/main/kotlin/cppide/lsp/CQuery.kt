@@ -5,18 +5,18 @@ import java.io.File
 import java.io.InputStream
 import java.io.OutputStream
 
-class CQuery {
-    val outStream: OutputStream
+class CQuery : IServer {
+    override val outStream: OutputStream
         get() {
             return _process.outputStream
         }
-    val inStream: InputStream
+    override val inStream: InputStream
         get() {
             return _process.inputStream
         }
     private lateinit var _process: Process
 
-    fun start(project: Project): Process {
+    override fun start(project: Project): Process {
         val processBuilder = ProcessBuilder("cquery")
         processBuilder.directory(File(project.basePath))
         _process = processBuilder.start()

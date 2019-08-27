@@ -17,7 +17,6 @@ class CppProjectStartUp :StartupActivity{
                 Messages.showErrorDialog(project, ex.message, title)
 //                Messages.showInfoMessage(project, ex.message, title)
 //                Messages.showMessageDialog(project, ex.message, title, Messages.getErrorIcon())
-//                Messages.showIdeaMessageDialog(project, ex.message, title, emptyArray(), 0, Messages.getErrorIcon(),null)
             }
         }
     }
