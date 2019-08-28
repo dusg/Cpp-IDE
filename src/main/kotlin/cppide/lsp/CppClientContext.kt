@@ -30,6 +30,6 @@ class CppClientContext : ClientContext{
      * Returns the [Project] associated with the LanuageClient.
      */
     override fun getProject(): Project {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return _project
     }
 }
