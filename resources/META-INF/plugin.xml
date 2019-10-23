@@ -1,0 +1,39 @@
+<idea-plugin>
+  <id>desg.personal.cpp_ide</id>
+  <name>C++ IDE</name>
+  <version>1.0</version>
+  <vendor email="dusiguang@gmail.com" >No Company</vendor>
+
+  <description>
+    这是一个实现language server 协议的客户端.
+    非要让我写够40个字符...
+  </description>
+
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <idea-version since-build="173.0"/>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <!-- uncomment to enable plugin in all products
+  <depends>com.intellij.modules.lang</depends>
+  -->
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+<!--    <fileTypeFactory implementation="cppide.CppFileTypeFactory"/>-->
+    <fileType name="c/c++ file" implementationClass="cppide.CppFileType" fieldName="INSTANCE" language="C/C++"
+              extensions="cpp;cc;c;h;hpp"/>
+    <lang.syntaxHighlighterFactory implementationClass="cppide.CppSyntaxHighlighterFactory" language="C/C++"/>
+    <colorSettingsPage implementation="cppide.CppColorSettingsPage"/>
+<!--    <postStartupActivity implementation="cppide.plugin.CppProjectStartUp" id="cppide.plugin.CppProjectStartUp"/>-->
+    <completion.contributor implementationClass="cppide.plugin.CppCompletionContributor" language="C/C++"/>
+    <lang.parserDefinition language="C/C++" implementationClass="cppide.psi.CppParserDefinition"/>
+
+  </extensions>
+
+  <actions>
+    <!-- Add your actions here -->
+  </actions>
+
+</idea-plugin>
