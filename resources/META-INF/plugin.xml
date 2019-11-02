@@ -26,11 +26,15 @@
               extensions="cpp;cc;c;h;hpp"/>
     <lang.syntaxHighlighterFactory implementationClass="cppide.CppSyntaxHighlighterFactory" language="C/C++"/>
     <colorSettingsPage implementation="cppide.CppColorSettingsPage"/>
-<!--    <postStartupActivity implementation="cppide.plugin.CppProjectStartUp" id="cppide.plugin.CppProjectStartUp"/>-->
+    <postStartupActivity implementation="cppide.plugin.CppProjectStartUp" id="cppide.plugin.CppProjectStartUp"/>
     <completion.contributor implementationClass="cppide.plugin.CppCompletionContributor" language="C/C++"/>
     <lang.parserDefinition language="C/C++" implementationClass="cppide.psi.CppParserDefinition"/>
-
   </extensions>
+  <project-components>
+<!--    <component>-->
+<!--      <implementation-class>cppide.plugin.CppProjectComponent</implementation-class>-->
+<!--    </component>-->
+  </project-components>
 
   <actions>
     <!-- Add your actions here -->

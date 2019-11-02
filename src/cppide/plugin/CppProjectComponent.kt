@@ -4,7 +4,7 @@ import com.intellij.openapi.components.ProjectComponent
 import cppide.lsp.LSPMgr
 
 class CppProjectComponent : ProjectComponent{
-    val LSP = LSPMgr()
+    val myLSP = LSPMgr()
     /**
      * Invoked when the project corresponding to this component instance is closed.
      *

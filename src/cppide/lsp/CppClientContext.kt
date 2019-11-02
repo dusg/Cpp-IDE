@@ -6,10 +6,10 @@ import org.wso2.lsp4intellij.client.languageserver.requestmanager.RequestManager
 import org.wso2.lsp4intellij.editor.EditorEventManager
 
 class CppClientContext : ClientContext{
-    private var _project: Project
+    private var myProject: Project
 
     constructor(project: Project){
-        _project = project
+        myProject = project
     }
 
     /**
@@ -30,6 +30,6 @@ class CppClientContext : ClientContext{
      * Returns the [Project] associated with the LanuageClient.
      */
     override fun getProject(): Project {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return myProject
     }
 }

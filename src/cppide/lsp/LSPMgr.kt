@@ -1,49 +1,36 @@
 package cppide.lsp
 
 import com.intellij.openapi.project.Project
-import cppide.plugin.CppProjectComponent
 import org.eclipse.lsp4j.jsonrpc.Launcher
 import org.eclipse.lsp4j.services.LanguageServer
-import java.util.concurrent.Future
 
 class LSPMgr {
-    private lateinit var serverFuture: Future<Void>
-    private lateinit var languageServer: LanguageServer
-    private lateinit var _client: Client
-    lateinit var project: Project
-    private var _serverProcess: IServer? = null
+    private var myLspMap: MutableMap<Project, CppLSPClient> = mutableMapOf()
 
     companion object {
-        fun getInstance(project: Project): LSPMgr {
-            val lsp = project.getComponent(CppProjectComponent::class.java).LSP
-            lsp.project = project
-            return lsp
-        }
-    }
-
-    fun startServer() {
-        startServer(project)
+        val Instance = LSPMgr()
     }
 
     fun startServer(proj: Project) {
-        if (_serverProcess != null) {
+        if (myLspMap.containsKey(proj)) {
             return
         }
 
         val serverProc = getServerProc()
-        _serverProcess = serverProc
         serverProc.start(proj)
-        _client = Client(CppClientContext(proj))
+        val lspClient = CppLSPClient(proj)
         val launcher = Launcher.createLauncher(
-            _client,
+            lspClient,
             LanguageServer::class.java, serverProc.inStream, serverProc.outStream
         )
-        _client.languageServer = launcher.getRemoteProxy()
-        _client.serverFuture = launcher.startListening()
-        _client.init()
+        lspClient.languageServer = launcher.remoteProxy
+        lspClient.serverFuture = launcher.startListening()
+        lspClient.serverProcess = serverProc
+        lspClient.init()
+        myLspMap[proj] = lspClient
     }
 
     private fun getServerProc(): IServer {
-        return Clangd()
+        return Ccls()
     }
 }

@@ -10,7 +10,7 @@ class CppProjectStartUp :StartupActivity{
 
     override fun runActivity(project: Project) {
         try {
-            LSPMgr.getInstance(project).startServer()
+            LSPMgr.Instance.startServer(project)
         } catch (ex: Exception) {
             val title = "Language Server message"
             ApplicationUtils.invokeLater {
